@@ -10,7 +10,7 @@ class Search extends Component {
                         className="form-control"
                         placeholder="..."
                     />
-                    <span className="input-group-btn">
+                    <span className="input-group-append">
                         <button className="btn btn-info">Search</button>
                     </span>
                 </div>
