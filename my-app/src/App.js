@@ -1,16 +1,19 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { Component } from "react";
 import "./App.css";
+import Title from "./components/Title";
+import Control from "./components/Control";
+import ListTodo from "./components/ListTodo";
 
-function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-            </header>
-        </div>
-        
-    );
+class App extends Component {
+    render() {
+        return (
+            <div className="container">
+                <Title />
+                <Control />
+                <ListTodo />
+            </div>
+        );
+    }
 }
 
 export default App;
