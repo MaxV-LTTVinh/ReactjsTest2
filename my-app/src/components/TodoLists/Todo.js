@@ -4,7 +4,7 @@ class Todo extends Component {
     constructor(props) {
         super(props);
     }
-    
+
     setElementLevel(level) {
         let elmStatus ="";
         switch (level) {
@@ -31,7 +31,7 @@ class Todo extends Component {
             <tr>
                 <td>{index + 1}</td>
                 <td>{todo.task}</td>
-                <td style={{ textAlign: 'center'}}>{this.setElementLevel(todo.level)}</td>
+                <td style={{ textAlign: 'center',verticalAlign: 'middle'}}>{this.setElementLevel(todo.level)}</td>
                 <td>
                     <button type="button" className="btn btn-warning">
                         Edit

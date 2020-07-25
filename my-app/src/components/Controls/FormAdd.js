@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 
 class FormAdd extends Component {
+    constructor(props) {
+        super(props);
+        this.clickClose = this.clickClose.bind(this);
+    }
+    clickClose(){
+        this.props.onClickClose();
+    }account
     render() {
         return (
             <div className="col-md-5">
@@ -27,9 +34,9 @@ class FormAdd extends Component {
                         <button type="button" className="btn btn-primary">
                             Submit
                         </button>
-                        <button type="button" className="btn btn-default">
+                        {/* <button type="button" className="btn btn-default" onClick={this.clickClose}>
                             Cancel
-                        </button>
+                        </button> */}
                     </div>
                 </form>
             </div>
