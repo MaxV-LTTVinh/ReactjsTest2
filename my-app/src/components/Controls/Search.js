@@ -20,6 +20,7 @@ class Search extends Component {
         this.setState({
             strSearch: "",
         });
+        this.props.onClickSearch("");
     }
 
     handleChange=(event)=> {
@@ -28,13 +29,13 @@ class Search extends Component {
     render() {
         return (
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div className="input-group">
+                <div className="input-group ">
                     <input
                         type="text"
                         name="strSearch"
                         value={this.state.strSearch}
                         onChange={this.handleChange}
-                        className="form-control"
+                        className="form-control "
                         placeholder="..."
                     />
                     <span className="input-group-append">

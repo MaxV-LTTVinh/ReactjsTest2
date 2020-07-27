@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import Todo from "./TodoLists/Todo";
 
 class ListTodo extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     render() {
         const elmTodo = this.props.todoList.map((item, index) => {
             return (
-                <Todo todo={item} key={index} index={index}/>
+                <Todo handelDeleteTodo={this.props.handelDeleteTodo} todo={item} key={index} index={index}/>
             );
         })
         return (

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import Search from "./Controls/Search";
 import Sort from "./Controls/Sort";
-import FormAdd from "./Controls/FormAdd";
 class Control extends Component {
     constructor(props) {
         super(props);
@@ -13,8 +12,7 @@ class Control extends Component {
     }
     render() {
         let isShowFormAdd = this.props.isShowForm;
-        let elmForm,
-            elmBtnShowForm = (
+        let   elmBtnShowForm = (
                 <button
                     type="button"
                     className="btn btn-info btn-block"
@@ -23,31 +21,30 @@ class Control extends Component {
                     Add
                 </button>
             );
-        if (isShowFormAdd) {
-            elmForm = <FormAdd onClickClose={this.clickAdd}/>;
-            elmBtnShowForm = (
-                <button
-                    type="button"
-                    className="btn btn-success btn-block"
-                    onClick={this.clickAdd}
-                >
-                    Close
-                </button>
-            );
-        }
+            if(isShowFormAdd){
+                elmBtnShowForm = (
+                    <button
+                        type="button"
+                        className="btn btn-success btn-block"
+                        onClick={this.clickAdd}
+                    >
+                        Close
+                    </button>
+                );
+            }
 
         return (
             <div>
                 <div className="row">
-                    <Search onClickSearch={this.props.onClickSearch}/>
-                    <Sort />
+                    <Search onClickSearch={this.props.onClickSearch} />
+                    <Sort
+                        onClickSort={this.props.onClickSort}
+                        orderBy={this.props.orderBy}
+                        orderDir={this.props.orderDir}
+                    />
                     <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                         {elmBtnShowForm}
                     </div>
-                </div>
-                <div className="row m-1">
-                    <div className="col-md-7" />
-                    {elmForm}
                 </div>
             </div>
         );

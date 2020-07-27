@@ -3,47 +3,54 @@ import React, { Component } from "react";
 class Todo extends Component {
     constructor(props) {
         super(props);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     setElementLevel(level) {
-        let elmStatus ="";
-        switch (level) {
-            case 0:
-                elmStatus = <span className="badge badge-secondary">small</span>;
-                break;
-            case 1:
+        let elmStatus = (
+            <span className="badge badge-secondary">small</span>
+        );
+        if (level == 1) {
                 elmStatus = <span className="badge  badge-info">medium</span>;
-                break;
-
-            case 2:
-                elmStatus = <span className="badge badge-danger">high</span>;
-                break;
         }
-        return elmStatus
+        else if(level == 2){
+            elmStatus = <span className="badge badge-danger">high</span>;
+        }
+        return elmStatus;
     }
-
+    handleDelete(id) {
+        this.props.handelDeleteTodo(id);
+    }
     render() {
         const todo = this.props.todo;
         const index = this.props.index;
         //console.log(key);
-        
+
         return (
             <tr>
                 <td>{index + 1}</td>
                 <td>{todo.task}</td>
-                <td style={{ textAlign: 'center',verticalAlign: 'middle'}}>{this.setElementLevel(todo.level)}</td>
-                <td>
-                    <button type="button" className="btn btn-warning">
+                <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                    {this.setElementLevel(todo.level)}
+                </td>
+                <td
+                    className="btn-group-sm"
+                    style={{ verticalAlign: "middle" }}
+                >
+                    <button type="button" className="btn btn-warning btn-sm">
                         Edit
                     </button>
-                    <button type="button" className="btn btn-danger">
+                    <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={() => this.handleDelete(todo.id)}
+                    >
                         Delete
                     </button>
                 </td>
             </tr>
         );
     }
-    
 }
 
 export default Todo;

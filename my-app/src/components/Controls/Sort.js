@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 
 class Sort extends Component {
+constructor(props) {
+        super(props);
+        this.handleSort = this.handleSort.bind(this);
+    }
+    handleSort(orderBy, orderDir){
+        this.props.onClickSort(orderBy,orderDir)
+    }
     render() {
         return (
             <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -20,17 +27,17 @@ class Sort extends Component {
                             aria-labelledby="dropdownMenu1"
                         >
                             <li>
-                                <a role="button">Name ASC</a>
+                                <a onClick={() => this.handleSort('task','asc')} role="button" className="btn dropdown-item">Name ASC</a>
                             </li>
                             <li>
-                                <a role="button">Name ASC</a>
+                                <a onClick={() => this.handleSort('task','desc')} role="button" className="btn dropdown-item">Name DESC</a>
                             </li>
-                            <li role="separator" className="divider" />
+                            <li role="separator" className="dropdown-divider" />
                             <li>
-                                <a role="button">Name ASC</a>
+                                <a onClick={() => this.handleSort('level','asc')} role="button" className="btn dropdown-item">Level ASC</a>
                             </li>
                             <li>
-                                <a role="button">Name ASC</a>
+                                <a onClick={() => this.handleSort('level','desc')} role="button" className="btn dropdown-item">Level DESC</a>
                             </li>
                         </ul>
                         <span className="label label-success label-medium" />
