@@ -1,35 +1,53 @@
 import React, { Component } from "react";
-const { v4: uuidv4 } = require('uuid');
 
 class FormAdd extends Component {
-    constructor(props) {
-        super(props);
-        this.clickClose = this.clickClose.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-
-        this.state = {
-            task: "",
-            level: 0,
-        };
-    }
-    clickClose() {
+    state = {
+        id : '',
+        task: "",
+        level: 0,
+    };
+    clickClose = () => {
         this.props.onClickClose();
     }
 
-    handleSubmit(event) {
-        event.preventDefault();  
-        console.log(this.state);
+    handleSubmit = (event) => {
+        event.preventDefault();
         let todo = {
-            id: uuidv4(),
+            id: this.state.id,
             task: this.state.task,
             level: this.state.level
         }
 
-        this.props.onClickSubmit(todo);      
+        this.props.onClickSubmit(todo);     
+        // this.setState({
+        //     id : '',
+        //     task: "",
+        //     level: 0,
+        // } );
     }
 
-    handleChange(event) {
+    componentWillMount = () => {
+        let todoSelected = this.props.todoSelected;
+        if(todoSelected != null && todoSelected.id != ''){
+            this.setState({
+                id : todoSelected.id,
+                task: todoSelected.task,
+                level: todoSelected.level,
+            })
+        }
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        if(nextProps.todoSelected != null && nextProps.todoSelected.id !== ''){
+            this.setState({
+                id : nextProps.todoSelected.id,
+                task: nextProps.todoSelected.task,
+                level: nextProps.todoSelected.level,
+            })
+        }
+    }
+
+    handleChange = (event) => {
         this.setState({
             [event.target.name]:
                 event.target.type === "checkbox"
@@ -38,6 +56,7 @@ class FormAdd extends Component {
         });
     }
     render() {
+        //console.log(this.props.todoSelected);
         return (
             <div className="row m-1">
                 <div className="col-md-4 col-lg-6 col-xl-7" />
@@ -56,7 +75,7 @@ class FormAdd extends Component {
                             </div>
                             <label className="sr-only" htmlFor="" />
                             <select
-                                value={this.state.name}
+                                value={this.state.level}
                                 onChange={this.handleChange}
                                 className="form-control"
                                 name="level"

@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 
 class Sort extends Component {
-constructor(props) {
-        super(props);
-        this.handleSort = this.handleSort.bind(this);
-    }
-    handleSort(orderBy, orderDir){
+    handleSort = (orderBy, orderDir) => {
         this.props.onClickSort(orderBy,orderDir)
     }
     render() {

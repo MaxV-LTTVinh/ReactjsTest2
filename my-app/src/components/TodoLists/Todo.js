@@ -1,25 +1,21 @@
 import React, { Component } from "react";
 
 class Todo extends Component {
-    constructor(props) {
-        super(props);
-        this.handleDelete = this.handleDelete.bind(this);
-    }
 
-    setElementLevel(level) {
-        let elmStatus = (
-            <span className="badge badge-secondary">small</span>
-        );
-        if (level == 1) {
-                elmStatus = <span className="badge  badge-info">medium</span>;
-        }
-        else if(level == 2){
+    setElementLevel = (level) => {
+        let elmStatus = <span className="badge badge-secondary">small</span>;
+        if (level === 1) {
+            elmStatus = <span className="badge  badge-info">medium</span>;
+        } else if (level === 2) {
             elmStatus = <span className="badge badge-danger">high</span>;
         }
         return elmStatus;
     }
-    handleDelete(id) {
+    handleDelete = (id) => {
         this.props.handelDeleteTodo(id);
+    }
+    onClickEdit = (todo) => {
+        this.props.onClickEdit(todo);
     }
     render() {
         const todo = this.props.todo;
@@ -37,7 +33,11 @@ class Todo extends Component {
                     className="btn-group-sm"
                     style={{ verticalAlign: "middle" }}
                 >
-                    <button type="button" className="btn btn-warning btn-sm">
+                    <button
+                        type="button"
+                        className="btn btn-warning btn-sm"
+                        onClick={() => this.onClickEdit(todo)}
+                    >
                         Edit
                     </button>
                     <button

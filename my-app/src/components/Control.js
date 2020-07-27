@@ -3,11 +3,7 @@ import React, { Component } from "react";
 import Search from "./Controls/Search";
 import Sort from "./Controls/Sort";
 class Control extends Component {
-    constructor(props) {
-        super(props);
-        this.clickAdd = this.clickAdd.bind(this);
-    }
-    clickAdd() {
+    clickAdd = () => {
         this.props.onClickAdd();
     }
     render() {
